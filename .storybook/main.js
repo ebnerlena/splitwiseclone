@@ -17,8 +17,6 @@ module.exports = {
       return item;
     })
 
-    
-
     // Return the altered config
     return config;
   }

@@ -11,29 +11,33 @@ const App = () => (
   <>
 
     <Router>
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to="/sign-in">Sign in</Link>
-        <Link to="/money-transactions">Money Transactions</Link>
-      </nav>
-      <Switch>
-        <Route path="/sign-in" component={Signup} />
-        <Route
-          path="/money-transactions"
-          render={() => (
-            <>
-              Hello
-              <MoneyTransactionCreate />
-              <MoneyTransactionList />
-            </>
-          )}
-        />
-        <Route path="/" render={() => <div> Home Page</div>} />
-        <Route path="/test2" render={() => <Button>Click me</Button>} />
-        <Redirect to="/" />
-      </Switch>
-
-      <div> Default rendered like a footer</div>
+      <header>
+        <h1> Splitwise Clone </h1>
+        <nav>
+          <Link to="/">Home</Link>
+          <Link to="/sign-in">Sign in</Link>
+          <Link to="/money-transactions">Money Transactions</Link>
+        </nav>
+      </header>
+      <main>
+        <Switch>
+          <Route path="/sign-in" component={Signup} />
+          <Route
+            path="/money-transactions"
+            render={() => (
+              <>
+                Hello
+                <MoneyTransactionCreate />
+                <MoneyTransactionList />
+              </>
+            )}
+          />
+          <Route path="/" render={() => <div> Home Page</div>} />
+          <Route path="/test2" render={() => <Button>Click me</Button>} />
+          <Redirect to="/" />
+        </Switch>
+      </main>
+      <footer> </footer>
     </Router>
   </>
 );

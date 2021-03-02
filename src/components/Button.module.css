@@ -39,12 +39,13 @@
 
 .button:focus {
   outline: none;
-  box-shadow: 0 0 6px #003fc7;
+  box-shadow: 0 0 6px #62959c;
 
 }
 
 .primary {
   color: #ffffff;
-  background: #2268FF;
+  background: #62959c;
 }
+
 
