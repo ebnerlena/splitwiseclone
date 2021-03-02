@@ -1,0 +1,41 @@
+{
+    "env": {
+        "browser": true,
+        "es6": true,
+        "node": true
+    },
+    "extends": [
+        "plugin:react/recommended",
+        "airbnb"
+    ],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+        "react/prop-types": "off",
+        "no-console": "off",
+        "import/no-extraneous-dependencies": [
+            "error",
+            {
+              "devDependencies": [
+                "*.js",
+                "**/*.test.js",
+                "**/*.spec.js",
+                "**/*.stories.*",
+                "**/scripts/*.js",
+                "**/stories/**/*.js",
+                "**/__tests__/**/*.js",
+                "**/.storybook/**/*.*"
+              ]
+            }
+          ]
+    }
+}
