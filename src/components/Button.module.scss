@@ -1,3 +1,5 @@
+@import '../styles/Colors.scss';
+
 .button {
     /* button reset */
     border: none;
@@ -45,7 +47,7 @@
 
 .primary {
   color: #ffffff;
-  background: #62959c;
+  background: $primaryColor;
 }
 
 
