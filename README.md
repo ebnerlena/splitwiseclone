@@ -1,4 +1,4 @@
-# Splitewise Clone - Fullstack SS 2021
+# Splitwise Clone - Fullstack SS 2021
 
 ## Members
 - Alexandru Sava
