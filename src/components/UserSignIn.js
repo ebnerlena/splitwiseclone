@@ -1,50 +1,55 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import { useFormik } from 'formik';
 import { object, string } from 'yup';
 
 import Button from './Button';
-import Input from './Input';
+import TextInput from './TextInput';
+import PasswordInput from './PasswordInput';
 
 const validationSchema = object({
-  username: string().min(3),
-  password: string().min(6),
+  username: string().min(4).required(),
+  password: string().min(6).required(),
 });
 
 const UserSignIn = () => {
   const formik = useFormik({
     initialValues: { username: '', password: '' },
     validationSchema,
-    onSubmit: (values) => console.log(values),
+    onSubmit: (values) => {
+      const submission = document.querySelector('#submission');
+      submission.innerHTML = `Trying to login with: Username: ${values.username}, PW: ${values.password}`;
+    },
   });
-
-  useEffect(() => { console.log('render on mount'); }, []);
-  useEffect(() => { console.log('render on rerender'); });
-  useEffect(() => { console.log('render on username change'); }, [formik.values.username]);
 
   return (
     <div>
       <form onSubmit={formik.handleSubmit}>
-        <Input
+        <TextInput
           type="text"
           inputName="username"
           labelText="Username"
           onChange={formik.handleChange}
           value={formik.values.username}
+          id="username"
         />
-        {formik.errors.username}
-        <br />
-        <Input
+        <p>
+          {formik.errors.username}
+        </p>
+        <PasswordInput
           type="password"
+          id="password"
           inputName="password"
           labelText="Password"
           onChange={formik.handleChange}
           value={formik.values.password}
         />
-        {formik.errors.password}
-        <br />
-        <Button type="submit" disabled={(!formik.isValid)}>Sign up</Button>
+        <p>
+          {formik.errors.password}
+        </p>
+        <Button type="submit" onClick={formik.handleSubmit} disabled={!(formik.isValid && formik.dirty)}>Sign In</Button>
       </form>
+      <p id="submission"> </p>
     </div>
   );
 };
