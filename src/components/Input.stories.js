@@ -4,17 +4,7 @@ import SelectInput from './SelectInput';
 import TextInput from './TextInput';
 import DecimalInput from './DecimalInput';
 import PasswordInput from './PasswordInput';
-
-const options = [
-  {
-    label: 'Option1',
-    value: '1',
-  },
-  {
-    label: 'Option2',
-    value: '2',
-  },
-];
+import Users from '../data/User.json';
 
 storiesOf('Input Elements', module)
   .add('Text Input', () => (
@@ -27,5 +17,5 @@ storiesOf('Input Elements', module)
     <PasswordInput labelText="Password" />
   ))
   .add('Select Input', () => (
-    <SelectInput labelText="Options" options={options} />
+    <SelectInput labelText="Options" options={Users} />
   ));

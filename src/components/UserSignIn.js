@@ -26,7 +26,6 @@ const UserSignIn = () => {
     <div>
       <form onSubmit={formik.handleSubmit}>
         <TextInput
-          type="text"
           inputName="username"
           labelText="Username"
           onChange={formik.handleChange}
@@ -37,7 +36,6 @@ const UserSignIn = () => {
           {formik.errors.username}
         </p>
         <PasswordInput
-          type="password"
           id="password"
           inputName="password"
           labelText="Password"
