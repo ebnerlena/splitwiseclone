@@ -1,4 +1,4 @@
-@import '../styles/Colors.scss';
+@import '../styles/Variables.scss';
 
 .button {
     /* button reset */
@@ -52,6 +52,6 @@
 
 
 button:disabled, button[disabled] {
-  background: red;
+  background: $accentColor;
 }
 

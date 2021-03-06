@@ -1,12 +1,24 @@
-@import '../styles/Colors.scss';
+@import '../styles/Variables.scss';
 
-.input {
-    input{
+.input__container {
+    padding: 2px;
+    margin: 5px; 
+    font-family: $defaultFont;
 
+    .label {
+        margin-right: 12px;
+        color: $textColor;
+        text-transform: uppercase;
+        font-family: $headingFont;
     }
     
-    label {
-        margin-right: 12px;
-        color: red;
+    .input {
+    
+    }
+
+    .select {
+        padding: 5px;
     }
 }
+
+

@@ -26,7 +26,6 @@ const App = () => (
             path="/money-transactions"
             render={() => (
               <>
-                Hello
                 <MoneyTransactionCreate />
                 <MoneyTransactionList />
               </>
