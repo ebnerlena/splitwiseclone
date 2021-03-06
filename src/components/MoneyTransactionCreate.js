@@ -1,7 +1,16 @@
 import React from 'react';
+import Button from './Button';
+import DecimalInput from './DecimalInput';
+import SelectInput from './SelectInput';
 
 const MoneyTransactionCreate = () => (
-  <div>MoneyTransactionCreate</div>
+  <>
+    <form>
+      <SelectInput> </SelectInput>
+      <DecimalInput> </DecimalInput>
+      <Button> </Button>
+    </form>
+  </>
 );
 
 export default MoneyTransactionCreate;

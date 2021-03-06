@@ -1,72 +1,55 @@
-import React, { useEffect } from 'react'; // useState
+import React from 'react';
 
 import { useFormik } from 'formik';
 import { object, string } from 'yup';
 
 import Button from './Button';
-import Input from './Input';
-
-// custom hook here
-// const [values, setValue] = useForm({ username: '' , password: ''})
-// const useForm = (values) => {
-//   const [username, setUsername] = useState(values.username);
-//   const [password, setPassword] = useState(values.password);
-
-//   const setValue = (prop) => {
-//     if(prop == 'username'){
-//       return setUsername
-//     } else if(prop == 'password'){
-//       return setPassword
-//     }
-//   }
-
-//   return [{username, password}, setValue]
-// }
+import TextInput from './TextInput';
+import PasswordInput from './PasswordInput';
 
 const validationSchema = object({
-  username: string().min(3),
-  password: string().min(6),
+  username: string().min(4).required(),
+  password: string().min(6).required(),
 });
 
 const UserSignUp = () => {
   const formik = useFormik({
     initialValues: { username: '', password: '' },
     validationSchema,
-    onSubmit: (values) => console.log(values),
+    onSubmit: (values) => {
+      const submission = document.querySelector('#submission');
+      submission.innerHTML = `Trying to sign up with: Username: ${values.username}, PW: ${values.password}`;
+    },
   });
-
-  useEffect(() => { console.log('render on mount'); }, []);
-  useEffect(() => { console.log('render on rerender'); });
-  useEffect(() => { console.log('render on username change'); }, [formik.values.username]);
-
-  // const [username, setUsername] = useState('');
-  // const [password, setPassword] = useState('');
-  // const [{username, password}, setValue] = useForm({username: 'user', password: 'geheim'})
 
   return (
     <div>
       <form onSubmit={formik.handleSubmit}>
-
-        <Input
+        <TextInput
           type="text"
           inputName="username"
           labelText="Username"
           onChange={formik.handleChange}
           value={formik.values.username}
+          id="username"
         />
-        {formik.errors.username}
-        <br />
-        <Input
+        <p>
+          {formik.errors.username}
+        </p>
+        <PasswordInput
           type="password"
+          id="password"
           inputName="password"
           labelText="Password"
           onChange={formik.handleChange}
           value={formik.values.password}
         />
-        {formik.errors.password}
-        <br />
-        <Button type="submit" disabled={(!formik.isValid)}>Sign up</Button>
+        <p>
+          {formik.errors.password}
+        </p>
+        <Button type="submit" onClick={formik.handleSubmit} disabled={!(formik.isValid && formik.dirty)}>Sign Up</Button>
       </form>
+      <p id="submission"> </p>
     </div>
   );
 };

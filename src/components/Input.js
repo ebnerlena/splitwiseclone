@@ -1,23 +1,25 @@
 import React from 'react';
-// import styles from './Input.module.css'
+import styles from './Input.module.scss';
 
 const Input = ({
-  inputName, labelText, type, onClick, onChange, value,
+  inputName, id, labelText, type, onClick, onChange, value,
 }) => {
   if (labelText) {
     return (
-      <>
+      <div className="input">
         <label htmlFor={inputName}>{labelText}</label>
         <input
+          id={id}
           name={inputName}
           onClick={onClick}
           onChange={
             (evt) => onChange(evt)
-}
+          }
           type={type}
           value={value}
+          className={`${styles.input}`}
         />
-      </>
+      </div>
     );
   }
 

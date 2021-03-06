@@ -51,3 +51,7 @@
 }
 
 
+button:disabled, button[disabled] {
+  background: red;
+}
+
