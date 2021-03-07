@@ -1,6 +1,8 @@
+/* eslint eqeqeq: "off" */
 import React from 'react';
 import { useFormik } from 'formik';
 import { object, number } from 'yup';
+import styles from './MoneyTransactionCreate.module.scss';
 
 import Button from './Button';
 import DecimalInput from './DecimalInput';
@@ -11,19 +13,23 @@ const validationSchema = object({
   amount: number().positive(),
 });
 
+let creditorId = 1;
+
 const MoneyTransactionCreate = () => {
   const formik = useFormik({
-    initialValues: { userId: 0, amount: '0' },
+    initialValues: { userId: 1, amount: '0' },
     validationSchema,
     onSubmit: (values) => {
-      const creditorId = (values.userId === 1 ? 2 : 1);
+      creditorId = (values.userId == 1 ? 2 : 1);
+      const divEl = document.querySelector('#submission');
+      divEl.innerHTML = `Trying to create amount: ${values.amount}, from User: ${creditorId} to User: ${values.userId}`;
       console.log(`Trying to create amount: ${values.amount}, from User: ${creditorId} to User: ${values.userId}`);
     },
   });
 
   return (
     <>
-      <form onSubmit={formik.handleSubmit}>
+      <form onSubmit={formik.handleSubmit} className={`${styles.createForm}`}>
         <SelectInput
           options={Users}
           inputName="userId"
@@ -47,6 +53,7 @@ const MoneyTransactionCreate = () => {
           Create
         </Button>
       </form>
+      <div id="submission" />
     </>
   );
 };
