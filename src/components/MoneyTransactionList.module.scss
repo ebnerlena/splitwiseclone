@@ -1,0 +1,10 @@
+.list {
+    display: flex;
+    flex-direction: column;
+
+    .item {
+        display: flex;
+        justify-content: space-around;
+        width: 500px;
+    }
+}

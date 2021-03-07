@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from './Button';
+import styles from './MoneyTransactionList.module.scss';
 import MoneyTransactions from '../data/MoneyTransaction.json';
 import Users from '../data/User.json';
 
@@ -10,10 +11,10 @@ const MoneyTransactionList = () => (
 
   <>
     <h2>All Transactions</h2>
-    <dl>
+    <dl className={`${styles.list}`}>
       {MoneyTransactions.map((t) => (
         <React.Fragment key={t.id}>
-          <dt>
+          <dt className={`${styles.item}`}>
             <span>{Users[t.debitorId - 1].name}</span>
             <span>
               Amount:
