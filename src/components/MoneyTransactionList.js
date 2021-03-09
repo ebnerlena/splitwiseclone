@@ -4,13 +4,17 @@ import styles from './MoneyTransactionList.module.scss';
 import MoneyTransactions from '../data/MoneyTransaction.json';
 import Users from '../data/User.json';
 
-const transactionsList = Array.from(MoneyTransactions);
-console.log(transactionsList);
+const payBtnClick = (ev) => {
+  const date = new Date().toISOString();
+  console.log(`id: ${ev.target.id}, paidAt: ${date}`);
+  const btn = document.getElementById(ev.target.id);
+  btn.disabled = true;
+  btn.innerHTML = 'Paid';
+};
 
 const MoneyTransactionList = () => (
 
   <>
-    <h2>All Transactions</h2>
     <dl className={`${styles.list}`}>
       {MoneyTransactions.map((t) => (
         <React.Fragment key={t.id}>
@@ -21,8 +25,8 @@ const MoneyTransactionList = () => (
               {t.amount}
             </span>
             {t.paidAt
-              ? <Button disabled>Paid</Button>
-              : <Button>Pay now</Button>}
+              ? <Button id={t.id} disabled>Paid</Button>
+              : <Button id={t.id} onClick={payBtnClick}>Pay now</Button>}
           </dt>
         </React.Fragment>
       ))}

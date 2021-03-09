@@ -1,4 +1,23 @@
 .createForm {
     display: flex;
     align-items: center;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+.toogleContainer {
+    display: flex;
+
+    div{
+        padding: 1rem;
+    }
+    h3 {
+        padding: 0 1rem;
+    }
+}
+
+.userAmountContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
