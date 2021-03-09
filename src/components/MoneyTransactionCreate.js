@@ -1,6 +1,6 @@
 /* eslint eqeqeq: "off" */
 import React from 'react';
-import { useFormik, Fields } from 'formik';
+import { useFormik } from 'formik';
 import { object, number } from 'yup';
 import styles from './MoneyTransactionCreate.module.scss';
 
