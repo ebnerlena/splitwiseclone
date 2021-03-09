@@ -11,7 +11,9 @@ module.exports = {
     library: '',
     libraryTarget: 'commonjs',
   },
-  plugins: [new CleanWebpackPlugin()],
+  plugins: [
+    new CleanWebpackPlugin()
+  ],
   module: {
     rules: [
       {
