@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const useHTTP = (url) => {
+export const useHTTP = (url) => {
   const [response, setResponse] = useState([]);
   useEffect(() => {
     fetch(url)
@@ -20,11 +20,11 @@ const MoneyTransaction = () => {
         <li key={transaction.id}>
           <span>
             Debitor:
-            {users.find((user) => user.id === transaction.debitorId).name}
+            {users.find((user) => user.id === transaction.debitorId)?.name}
           </span>
           <span>
             Creator:
-            {users.find((user) => user.id === transaction.creditorId).name}
+            {users.find((user) => user.id === transaction.creditorId)?.name}
           </span>
           <span>
             Amount:

@@ -32,7 +32,7 @@ const App = () => (
               </>
             )}
           />
-          <Route path="/" component={MoneyTransaction} />
+          <Route path="/test" component={MoneyTransaction} />
           <Redirect to="/" />
         </Switch>
       </main>
