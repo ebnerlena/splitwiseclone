@@ -6,7 +6,7 @@ import SignUp from './components/UserSignUp';
 import SignIn from './components/UserSignIn';
 import MoneyTransactionList from './components/MoneyTransactionList';
 import MoneyTransactionCreate from './components/MoneyTransactionCreate';
-import MoneyTransaction from './containers/money-transactions/index';
+import MoneyTransaction from './containers/money-transactions/container';
 
 const App = () => (
   <>
