@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import MoneyTransactionCreate from './MoneyTransactionCreate';
-import MoneyTransactionList from './MoneyTransactionList';
+import MoneyTransactionCreate from './presentation';
+import MoneyTransactionList from '../../components/MoneyTransactionList';
 
 storiesOf('Money Transactions', module)
   .add('Create', () => (

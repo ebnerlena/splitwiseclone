@@ -2,9 +2,9 @@ const initialState = [];
 
 const UserReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'createUsers/success':
-      return [...state, ...action.payload];
-    case 'reset':
+    case 'fetchUsers/success':
+      return [...action.payload];
+    case 'resetUsers':
       return initialState;
     default:
       return state;

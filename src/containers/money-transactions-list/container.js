@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import MoneyTransactionsCreate from './presentation';
+import MoneyTransactionsList from './presentation';
+import fetchMoneyTransactions from '../../action-creators/fetch-money-transactions';
 import fetchUsers from '../../action-creators/fetch-users';
-import createMoneyTransactions from '../../action-creators/create-money-transactions';
 
 const mapStateToProps = (state, props) => (
   {
@@ -13,12 +13,10 @@ const mapStateToProps = (state, props) => (
 const mapDispatchToProps = (dispatch, props) => (
   {
     onLoadData: () => {
+      dispatch(fetchMoneyTransactions());
       dispatch(fetchUsers());
-    },
-    onCreate: (data) => {
-      dispatch(createMoneyTransactions(data));
     },
   }
 );
 
-export default connect(mapStateToProps, mapDispatchToProps)(MoneyTransactionsCreate);
+export default connect(mapStateToProps, mapDispatchToProps)(MoneyTransactionsList);

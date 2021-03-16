@@ -1,20 +1,20 @@
-const MoneyTransactionActionCreator = () => async (dispatch) => {
+const fetchMoneyTransactionsActionCreator = () => async (dispatch) => {
   dispatch({
-    type: 'createTransactions/inital',
+    type: 'fetchMoneyTransactions/inital',
     payload: {},
   });
   try {
     const moneyTransactions = await fetch('http://localhost:3001/money-transaction').then((respone) => respone.json());
     dispatch({
-      type: 'createTransactions/success',
+      type: 'fetchMoneyTransactions/success',
       payload: moneyTransactions,
     });
   } catch (exp) {
     dispatch({
-      type: 'createTransactions/error',
+      type: 'fetchMoneyTransactions/error',
       payload: { exp },
     });
   }
 };
 
-export default MoneyTransactionActionCreator;
+export default fetchMoneyTransactionsActionCreator;

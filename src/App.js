@@ -4,9 +4,8 @@ import {
 } from 'react-router-dom';
 import SignUp from './components/UserSignUp';
 import SignIn from './components/UserSignIn';
-import MoneyTransactionList from './components/MoneyTransactionList';
-import MoneyTransactionCreate from './components/MoneyTransactionCreate';
-import MoneyTransaction from './containers/money-transactions/container';
+import MoneyTransactionCreate from './containers/money-transaction-create/container';
+import MoneyTransactionsList from './containers/money-transactions-list/container';
 
 const App = () => (
   <>
@@ -28,11 +27,11 @@ const App = () => (
             render={() => (
               <>
                 <MoneyTransactionCreate />
-                <MoneyTransactionList />
+                <MoneyTransactionsList />
               </>
             )}
           />
-          <Route path="/test" component={MoneyTransaction} />
+          <Route path="/test" component={MoneyTransactionsList} />
           <Redirect to="/" />
         </Switch>
       </main>
