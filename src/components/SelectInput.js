@@ -18,7 +18,7 @@ const SelectInput = ({
       type={type}
       className={`${styles.select}`}
     >
-      {options.map((option) => (
+      {options?.map((option) => (
         <option value={option.id} key={option.id}>{option.name}</option>
       ))}
     </select>

@@ -1,11 +1,46 @@
 {
   "money-transaction": [
-    {"id": 1, "creditorId": 1, "debitorId": 2, "amount": 10.00, "paidAt": null },
-    {"id": 2, "creditorId": 3, "debitorId": 1, "amount": 11.20, "paidAt": "2000-01-01T00:00:00+01+00" }
+    {
+      "id": 1,
+      "creditorId": 1,
+      "debitorId": 2,
+      "amount": 10,
+      "paidAt": null
+    },
+    {
+      "id": 2,
+      "creditorId": 3,
+      "debitorId": 1,
+      "amount": 11.2,
+      "paidAt": "2000-01-01T00:00:00+01+00"
+    },
+    {
+      "id": 3,
+      "creditorId": 1,
+      "debitorId": 2,
+      "amount": 1,
+      "paidAt": null
+    },
+    {
+      "id": 4,
+      "creditorId": 1,
+      "debitorId": 2,
+      "amount": 4,
+      "paidAt": null
+    }
   ],
   "user": [
-    {"id": 1, "name": "Sepp"},
-    {"id": 2, "name": "Mike"},
-    {"id": 3, "name": "Fabian"}
+    {
+      "id": 1,
+      "name": "Sepp"
+    },
+    {
+      "id": 2,
+      "name": "Mike"
+    },
+    {
+      "id": 3,
+      "name": "Fabian"
+    }
   ]
 }

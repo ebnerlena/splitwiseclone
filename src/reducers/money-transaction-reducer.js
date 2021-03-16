@@ -2,9 +2,11 @@ const initialState = [];
 
 const MoneyTransactionReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'createTransactions/success':
+    case 'fetchMoneyTransactions/success':
+      return [...action.payload];
+    case 'createMoneyTransactions/success':
       return [...state, ...action.payload];
-    case 'reset':
+    case 'resetMoneyTransactions':
       return initialState;
     default:
       return state;
