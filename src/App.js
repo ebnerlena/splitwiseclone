@@ -31,7 +31,6 @@ const App = () => (
               </>
             )}
           />
-          <Route path="/test" component={MoneyTransactionsList} />
           <Redirect to="/" />
         </Switch>
       </main>

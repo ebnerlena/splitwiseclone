@@ -17,15 +17,15 @@
     {
       "id": 3,
       "creditorId": 1,
-      "debitorId": 2,
-      "amount": 1,
+      "debitorId": 3,
+      "amount": 2,
       "paidAt": null
     },
     {
       "id": 4,
       "creditorId": 1,
-      "debitorId": 2,
-      "amount": 4,
+      "debitorId": 3,
+      "amount": 2,
       "paidAt": null
     }
   ],

@@ -4,7 +4,7 @@ const fetchMoneyTransactionsActionCreator = () => async (dispatch) => {
     payload: {},
   });
   try {
-    const moneyTransactions = await fetch('http://localhost:3001/money-transaction').then((respone) => respone.json());
+    const moneyTransactions = await fetch('http://localhost:3001/money-transaction').then((response) => response.json());
     dispatch({
       type: 'fetchMoneyTransactions/success',
       payload: moneyTransactions,

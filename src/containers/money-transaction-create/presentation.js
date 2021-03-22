@@ -17,7 +17,7 @@ const MoneyTransactionCreate = ({
   users, moneyTransactions, onLoadData, onCreate,
 }) => {
   useEffect(() => { onLoadData(); }, []);
-  console.log(moneyTransactions);
+
   const formik = useFormik({
     initialValues: { userId: 1, amount: '0', selected: '0' },
     validationSchema,

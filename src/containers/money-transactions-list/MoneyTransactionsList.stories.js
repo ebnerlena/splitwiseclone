@@ -1,12 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import MoneyTransactionCreate from './presentation';
-import MoneyTransactionList from '../../components/MoneyTransactionList';
+import MoneyTransactionList from './presentation';
+import data from '../../../db.json';
+
 
 storiesOf('Money Transactions', module)
-  .add('Create', () => (
-    <MoneyTransactionCreate />
-  ))
   .add('List', () => (
-    <MoneyTransactionList />
+    <MoneyTransactionList users={data.user} moneyTransactions={data['money-transaction']} onLoadData={()=>{}}></MoneyTransactionList>
   ));

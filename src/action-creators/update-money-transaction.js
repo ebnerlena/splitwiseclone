@@ -1,4 +1,4 @@
-const createMoneyTransactionsActionCreator = (payload) => async (dispatch) => {
+const updateMoneyTransactionActionCreator = (payload) => async (dispatch) => {
   try {
     const requestOptions = {
       method: 'POST',
@@ -13,7 +13,7 @@ const createMoneyTransactionsActionCreator = (payload) => async (dispatch) => {
           return Promise.reject(error);
         }
         dispatch({
-          type: 'createMoneyTransactions/success',
+          type: 'updateMoneyTransaction/success',
           payload: data,
         });
         return data;
@@ -23,10 +23,10 @@ const createMoneyTransactionsActionCreator = (payload) => async (dispatch) => {
       });
   } catch (exp) {
     dispatch({
-      type: 'createMoneyTransactions/error',
+      type: 'updateMoneyTransaction/error',
       payload: { exp },
     });
   }
 };
 
-export default createMoneyTransactionsActionCreator;
+export default updateMoneyTransactionActionCreator;
