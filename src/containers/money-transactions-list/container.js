@@ -17,7 +17,7 @@ const mapDispatchToProps = (dispatch, props) => (
       dispatch(fetchMoneyTransactions());
       dispatch(fetchUsers());
     },
-    onUpdate: (data) => {
+    onUpdateTransaction: (data) => {
       dispatch(updateMoneyTransaction(data));
     },
   }

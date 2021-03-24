@@ -1,11 +1,15 @@
 const updateMoneyTransactionActionCreator = (payload) => async (dispatch) => {
   try {
+    const transaction = await fetch(`http://localhost:3001/money-transaction/${payload.id}`)
+      .then((response) => response.json());
+    transaction.paidAt = payload.paidAt;
+
     const requestOptions = {
-      method: 'POST',
+      method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
+      body: JSON.stringify(transaction),
     };
-    await fetch('http://localhost:3001/money-transaction', requestOptions)
+    await fetch(`http://localhost:3001/money-transaction/${payload.id}`, requestOptions)
       .then(async (response) => {
         const data = await response.json();
         if (!response.ok) {
@@ -22,6 +26,7 @@ const updateMoneyTransactionActionCreator = (payload) => async (dispatch) => {
         console.error('There was an error!', error);
       });
   } catch (exp) {
+    console.log(exp.message);
     dispatch({
       type: 'updateMoneyTransaction/error',
       payload: { exp },

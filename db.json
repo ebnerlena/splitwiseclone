@@ -2,29 +2,29 @@
   "money-transaction": [
     {
       "id": 1,
-      "creditorId": 1,
-      "debitorId": 2,
-      "amount": 10,
-      "paidAt": null
+      "creditorId": 3,
+      "debitorId": 1,
+      "amount": 15.2,
+      "paidAt": "2021-03-24T21:21:04.667Z"
     },
     {
       "id": 2,
       "creditorId": 3,
       "debitorId": 1,
       "amount": 11.2,
-      "paidAt": "2000-01-01T00:00:00+01+00"
+      "paidAt": "2021-03-24T21:21:27.595Z"
     },
     {
       "id": 3,
       "creditorId": 1,
       "debitorId": 3,
-      "amount": 2,
+      "amount": 1,
       "paidAt": null
     },
     {
       "id": 4,
-      "creditorId": 1,
-      "debitorId": 3,
+      "creditorId": 2,
+      "debitorId": 1,
       "amount": 2,
       "paidAt": null
     }

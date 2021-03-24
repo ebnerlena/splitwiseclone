@@ -5,5 +5,5 @@ import data from '../../../db.json';
 
 storiesOf('Money Transactions Create', module)
   .add('Create', () => (
-    <MoneyTransactionCreate users={data.user} moneyTransactions={data['money-transaction']} onLoadData={()=>{}} onCreate={()=>{}}></MoneyTransactionCreate>
+    <MoneyTransactionCreate users={data.user} moneyTransactions={data['money-transaction']} onLoadData={() => {}} onCreate={() => {}} />
   ));

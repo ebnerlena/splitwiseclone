@@ -2,16 +2,21 @@ import React, { useEffect } from 'react';
 import Button from '../../components/Button';
 import styles from './MoneyTransactionList.module.scss';
 
-const payBtnClick = (ev) => {
-  const date = new Date().toISOString();
-  console.log(`id: ${ev.target.id}, paidAt: ${date}`);
-  const btn = document.getElementById(ev.target.id);
-  btn.disabled = true;
-  btn.innerHTML = 'Paid';
-};
-
-const MoneyTransactionsList = ({ users, moneyTransactions, onLoadData }) => {
+const MoneyTransactionsList = ({
+  users, moneyTransactions, onLoadData, onUpdateTransaction,
+}) => {
   useEffect(() => { onLoadData(); }, []);
+
+  const payBtnClick = (ev) => {
+    const date = new Date().toISOString();
+    console.log(`id: ${ev.target.id}, paidAt: ${date}`);
+    const transaction = {
+      id: ev.target.id,
+      paidAt: date,
+    };
+    onUpdateTransaction(transaction);
+  };
+
   return (
     <>
       <dl className={`${styles.list}`}>
