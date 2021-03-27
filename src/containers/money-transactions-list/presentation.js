@@ -2,6 +2,14 @@ import React, { useEffect } from 'react';
 import Button from '../../components/Button';
 import styles from './MoneyTransactionList.module.scss';
 
+const renderButton = (transaction, payBtnClick) => {
+  if (transaction.paidAt) {
+    return <Button id={transaction.id} disabled>Paid</Button>;
+  }
+  return transaction.amount < 0
+    ? <Button id={transaction.id} disabled>Where is my money?</Button>
+    : <Button id={transaction.id} onClick={payBtnClick}>Pay now</Button>;
+};
 const MoneyTransactionsList = ({
   users, moneyTransactions, onLoadData, onUpdateTransaction,
 }) => {
@@ -28,9 +36,7 @@ const MoneyTransactionsList = ({
                 Amount:
                 {transaction.amount}
               </span>
-              {transaction.paidAt
-                ? <Button id={transaction.id} disabled>Paid</Button>
-                : <Button id={transaction.id} onClick={payBtnClick}>Pay now</Button>}
+              {renderButton(transaction, payBtnClick)}
             </dt>
           </React.Fragment>
         ))}

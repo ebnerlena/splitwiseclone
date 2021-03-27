@@ -3,29 +3,29 @@
     {
       "id": 1,
       "creditorId": 3,
-      "debitorId": 1,
+      "debitorId": 2,
       "amount": 15.2,
-      "paidAt": "2021-03-24T21:21:04.667Z"
+      "paidAt": "2021-03-27T08:55:25.225Z"
     },
     {
       "id": 2,
-      "creditorId": 3,
+      "creditorId": 2,
       "debitorId": 1,
       "amount": 11.2,
-      "paidAt": "2021-03-24T21:21:27.595Z"
+      "paidAt": null
     },
     {
       "id": 3,
       "creditorId": 1,
       "debitorId": 3,
-      "amount": 1,
+      "amount": 99,
       "paidAt": null
     },
     {
       "id": 4,
-      "creditorId": 2,
-      "debitorId": 1,
-      "amount": 2,
+      "creditorId": 1,
+      "debitorId": 2,
+      "amount": "-44",
       "paidAt": null
     }
   ],

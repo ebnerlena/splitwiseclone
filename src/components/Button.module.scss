@@ -56,5 +56,6 @@
 
 button:disabled, button[disabled] {
   background: $accentColor;
+  cursor: default;
 }
 

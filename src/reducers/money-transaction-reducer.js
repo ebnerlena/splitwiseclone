@@ -1,9 +1,9 @@
 const initialState = [];
+
 const showOnlyLatestState = (transactions) => {
   const result = new Set();
-  // todo: improve so that it must not be reveresed
   transactions.reverse().forEach((t) => { result.add(transactions.find((x) => x.id === t.id)); });
-  return Array.from(result);
+  return Array.from(result).sort((t1, t2) => t1.id - t2.id);
 };
 
 const MoneyTransactionReducer = (state = initialState, action) => {

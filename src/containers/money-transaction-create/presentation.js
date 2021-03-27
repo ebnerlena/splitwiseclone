@@ -30,7 +30,7 @@ const MoneyTransactionCreate = ({
         id: moneyTransactions[moneyTransactions.length - 1].id + 1,
         creditorId,
         debitorId: Number(values.userId),
-        amount: values.amount,
+        amount: values.selected === '0' ? values.amount : `-${values.amount}`,
         paidAt: null,
       };
       onCreate(transaction);
