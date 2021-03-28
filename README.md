@@ -3,6 +3,7 @@
 ## Members
 - Alexandru Sava
 - Lena Ebner
+- Stefania Mocan
 
 # Available Scripts
 

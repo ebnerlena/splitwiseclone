@@ -27,6 +27,20 @@
       "debitorId": 2,
       "amount": "-44",
       "paidAt": null
+    },
+    {
+      "id": 5,
+      "creditorId": 1,
+      "debitorId": 2,
+      "amount": "-2",
+      "paidAt": null
+    },
+    {
+      "id": 6,
+      "creditorId": 1,
+      "debitorId": 3,
+      "amount": 7,
+      "paidAt": "2021-03-28T13:27:42.269Z"
     }
   ],
   "user": [
