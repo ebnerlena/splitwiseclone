@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useFormik } from 'formik';
 import { object, number } from 'yup';
 import styles from './MoneyTransactionCreate.module.scss';
@@ -16,6 +16,7 @@ let creditorId = 1;
 const MoneyTransactionCreate = ({
   users, moneyTransactions, onLoadData, onCreate,
 }) => {
+  const [message, setMessage] = useState(null);
   useEffect(() => { onLoadData(); }, []);
 
   const formik = useFormik({
@@ -23,9 +24,7 @@ const MoneyTransactionCreate = ({
     validationSchema,
     onSubmit: (values) => {
       creditorId = (values.userId === 1 ? 2 : 1);
-      const divEl = document.querySelector('#submission');
-      divEl.innerHTML = `Trying to create amount: ${values.amount}, from User: ${users[creditorId - 1].name} to User: ${users[values.userId - 1].name}`;
-      console.log(`Trying to create amount: ${values.amount}, from User: ${users[creditorId - 1].name} to User: ${users[values.userId - 1].name} selected: ${values.selected}`);
+      setMessage(`Trying to create amount: ${values.amount}, from User: ${users[creditorId - 1].name} to User: ${users[values.userId - 1].name}`);
       const transaction = {
         id: moneyTransactions[moneyTransactions.length - 1].id + 1,
         creditorId,
@@ -84,6 +83,7 @@ const MoneyTransactionCreate = ({
         </div>
         <div id="submission" />
       </form>
+      { message && <div>{message}</div> }
     </>
   );
 };

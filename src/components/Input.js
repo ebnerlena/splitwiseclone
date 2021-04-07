@@ -6,8 +6,8 @@ const Input = ({
 }) => {
   if (labelText) {
     return (
-      <div className={`${styles.input__container}`}>
-        <label htmlFor={inputName} className={`${styles.label}`}>{labelText}</label>
+      <div className={styles.input__container}>
+        <label htmlFor={inputName} className={styles.label}>{labelText}</label>
         <input
           id={id}
           name={inputName}
@@ -17,7 +17,7 @@ const Input = ({
           }
           type={type}
           value={value}
-          className={`${styles.input}`}
+          className={styles.input}
         />
       </div>
     );
@@ -28,7 +28,7 @@ const Input = ({
       onClick={onClick}
       onChange={(evt) => onChange(evt)}
       type={type}
-      className={`${styles.input}`}
+      className={styles.input}
       value={value}
     />
   );

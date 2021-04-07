@@ -26,22 +26,20 @@ const MoneyTransactionsList = ({
   };
 
   return (
-    <>
-      <dl className={`${styles.list}`}>
-        {moneyTransactions.map((transaction) => (
-          <React.Fragment key={transaction.id}>
-            <dt className={`${styles.item}`}>
-              <span>{users?.find((user) => user.id === transaction.debitorId)?.name}</span>
-              <span>
-                Amount:
-                {transaction.amount}
-              </span>
-              {renderButton(transaction, payBtnClick)}
-            </dt>
-          </React.Fragment>
-        ))}
-      </dl>
-    </>
+    <dl className={`${styles.list}`}>
+      {moneyTransactions.map((transaction) => (
+        <React.Fragment key={transaction.id}>
+          <dt className={`${styles.item}`}>
+            <span>{users?.find((user) => user.id === transaction.debitorId)?.name}</span>
+            <span>
+              Amount:
+              {transaction.amount}
+            </span>
+            {renderButton(transaction, payBtnClick)}
+          </dt>
+        </React.Fragment>
+      ))}
+    </dl>
   );
 };
 
