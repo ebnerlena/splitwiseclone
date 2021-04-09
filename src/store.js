@@ -1,6 +1,8 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers';
+import auth from './firebase';
+
 
 const store = createStore(
   rootReducer,
@@ -11,5 +13,7 @@ const store = createStore(
 );
 
 window.store = store;
+
+window.auth = auth;
 
 export default store;
