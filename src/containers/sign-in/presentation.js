@@ -3,22 +3,28 @@ import React from 'react';
 import { useFormik } from 'formik';
 import { object, string } from 'yup';
 
-import Button from './Button';
-import TextInput from './TextInput';
-import PasswordInput from './PasswordInput';
+import { useHistory } from 'react-router-dom';
+import Button from '../../components/Button';
+import TextInput from '../../components/TextInput';
+import PasswordInput from '../../components/PasswordInput';
 
 const validationSchema = object({
-  username: string().min(4).required(),
+  email: string().min(4).required().email(),
   password: string().min(6).required(),
 });
 
-const UserSignIn = () => {
+const UserSignIn = ({ onSignIn }) => {
+  const history = useHistory();
+
   const formik = useFormik({
-    initialValues: { username: '', password: '' },
+    initialValues: { email: '', password: '' },
     validationSchema,
     onSubmit: (values) => {
+      const { email } = values;
+      const pw = values.password;
       const submission = document.querySelector('#submission');
-      submission.innerHTML = `Trying to login with: Username: ${values.username}, PW: ${values.password}`;
+      submission.innerHTML = `Trying to login with: Email: ${email}, PW: ${pw}`;
+      onSignIn(email, pw, history);
     },
   });
 
@@ -26,14 +32,14 @@ const UserSignIn = () => {
     <div>
       <form onSubmit={formik.handleSubmit}>
         <TextInput
-          inputName="username"
-          labelText="Username"
+          inputName="email"
+          labelText="Email"
           onChange={formik.handleChange}
-          value={formik.values.username}
-          id="username"
+          value={formik.values.email}
+          id="email"
         />
         <p>
-          {formik.errors.username}
+          {formik.errors.email}
         </p>
         <PasswordInput
           id="password"

@@ -3,7 +3,6 @@ import thunk from 'redux-thunk';
 import rootReducer from './reducers';
 import auth from './firebase';
 
-
 const store = createStore(
   rootReducer,
   compose(

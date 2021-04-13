@@ -1,5 +1,5 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import UserSignIn from './UserSignIn';
+import UserSignIn from './presentation';
 
 storiesOf('SignIn', module).add('default', () => <UserSignIn />);

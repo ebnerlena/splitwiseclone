@@ -53,6 +53,11 @@
   background: $primaryColor;
 }
 
+.logout {
+  color: #ffffff;
+  background: $accentColor;
+}
+
 
 button:disabled, button[disabled] {
   background: $accentColor;
