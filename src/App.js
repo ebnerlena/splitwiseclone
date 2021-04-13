@@ -19,7 +19,7 @@ const App = () => (
           <Link to="/sign-up">Sign Up</Link>
           <Link to="/sign-in">Sign In</Link>
           <Link to="/money-transactions">Money Transactions</Link>
-          <SignOut/>
+          <SignOut />
         </nav>
       </header>
       <main>

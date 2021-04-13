@@ -10,7 +10,7 @@ const mapStateToProps = (state, props) => (
 const mapDispatchToProps = (dispatch, props) => (
   {
     onSignOut: (history) => {
-      dispatch(signOut({history}));
+      dispatch(signOut({ history }));
     },
   }
 );
