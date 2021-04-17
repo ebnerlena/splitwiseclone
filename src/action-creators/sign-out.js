@@ -1,8 +1,8 @@
 import { auth } from '../firebase';
 
 const signOut = () => async (dispatch) => {
-  console.log(' i got called');
-  // no http call required (token needs to be removed from state in reducer)
+  // token needs to be removed from state in reducer
+  console.log('logging out now');
   auth.signOut();
   dispatch({ type: 'user/signedOut' });
 };

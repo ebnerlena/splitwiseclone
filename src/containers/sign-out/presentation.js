@@ -1,11 +1,22 @@
 import { useHistory } from 'react-router-dom';
 import Button from '../../components/Button';
-import styles from '../../components/Button.module.scss';
+import buttonStyles from '../../components/Button.module.scss';
 
 const UserSignOut = ({ onSignOut }) => {
   const history = useHistory();
+
+  const onLogoutClicked = () => {
+    onSignOut();
+    history.push('/sign-in');
+  };
   return (
-    <Button onClick={onSignOut} className={[styles.button, styles.logout].join(' ')}>Logout</Button>
+    <Button
+      type="button"
+      onClick={onLogoutClicked}
+      styles={[buttonStyles.button, buttonStyles.logout].join(' ')}
+    >
+      Logout
+    </Button>
   );
 };
 

@@ -4,6 +4,8 @@ const signUp = ({ email, password, history }) => async (dispatch) => {
   try {
     const response = await auth.createUserWithEmailAndPassword(email, password);
     // auth.signInWithEmailAndPassword(email, password)
+    console.log(response);
+
     const token = response.user.refreshToken;
     dispatch({
       type: 'user/signedUp',
@@ -12,10 +14,10 @@ const signUp = ({ email, password, history }) => async (dispatch) => {
 
     history.push('/money-transactions');
   } catch (exp) {
-    console.log(exp);
+    const error = exp.message;
     dispatch({
       type: 'user/signedUp/error',
-      payload: { exp },
+      payload: { signUpError: error },
     });
   }
 };

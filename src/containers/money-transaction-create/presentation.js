@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useFormik } from 'formik';
 import { object, number } from 'yup';
 import styles from './MoneyTransactionCreate.module.scss';
+import buttonStyles from '../../components/Button.module.scss';
 import Button from '../../components/Button';
 import DecimalInput from '../../components/DecimalInput';
 import SelectInput from '../../components/SelectInput';
@@ -76,6 +77,7 @@ const MoneyTransactionCreate = ({
           <Button
             onClick={formik.handleSubmit}
             disabled={!(formik.isValid && formik.dirty)}
+            styles={[buttonStyles.button, buttonStyles.primary].join(' ')}
           >
             {' '}
             Create

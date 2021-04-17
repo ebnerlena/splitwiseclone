@@ -2,9 +2,9 @@ import React from 'react';
 import styles from './Button.module.scss';
 
 const Button = ({
-  onClick, disabled, children, id,
+  onClick, disabled, children, id, styles,
 }) => (
-  <button type="button" id={id} onClick={onClick} disabled={disabled} className={[styles.button, styles.primary].join(' ')}>
+  <button type="button" id={id} onClick={onClick} disabled={disabled} className={styles}>
     {children}
   </button>
 );

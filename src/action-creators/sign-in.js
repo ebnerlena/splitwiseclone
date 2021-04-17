@@ -14,10 +14,11 @@ const signIn = ({ email, password, history }) => async (dispatch) => {
     );
     history.push('money-transactions');
   } catch (exp) {
+    const error = exp.message;
     dispatch(
       {
         type: 'user/signedIn/error',
-        payload: { exp },
+        payload: { signInError: error },
       },
     );
   }

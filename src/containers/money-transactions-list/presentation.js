@@ -1,19 +1,30 @@
 import React, { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import Button from '../../components/Button';
 import styles from './MoneyTransactionList.module.scss';
+import buttonStyles from '../../components/Button.module.scss';
+import auth from '../../firebase';
 
 const renderButton = (transaction, payBtnClick) => {
   if (transaction.paidAt) {
-    return <Button id={transaction.id} disabled>Paid</Button>;
+    return <Button id={transaction.id} disabled styles={[buttonStyles.button, buttonStyles.primary].join(' ')}>Paid</Button>;
   }
   return transaction.amount < 0
-    ? <Button id={transaction.id} disabled>Where is my money?</Button>
-    : <Button id={transaction.id} onClick={payBtnClick}>Pay now</Button>;
+    ? <Button id={transaction.id} disabled styles={[buttonStyles.button, buttonStyles.primary].join(' ')}>Where is my money?</Button>
+    : <Button id={transaction.id} onClick={payBtnClick} styles={[buttonStyles.button, buttonStyles.primary].join(' ')}>Pay now</Button>;
 };
 const MoneyTransactionsList = ({
   users, moneyTransactions, onLoadData, onUpdateTransaction,
 }) => {
   useEffect(() => { onLoadData(); }, []);
+
+  const history = useHistory();
+
+  useEffect(() => {
+    if (auth.currentUser == null) {
+      history.push('/sign-in');
+    }
+  }, []);
 
   const payBtnClick = (ev) => {
     const date = new Date().toISOString();

@@ -10,9 +10,10 @@ const fetchMoneyTransactionsActionCreator = () => async (dispatch) => {
       payload: moneyTransactions,
     });
   } catch (exp) {
+    const error = exp.message;
     dispatch({
       type: 'fetchMoneyTransactions/error',
-      payload: { exp },
+      payload: { error },
     });
   }
 };

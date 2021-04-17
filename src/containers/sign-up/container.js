@@ -4,6 +4,7 @@ import signUp from '../../action-creators/sign-up';
 
 const mapStateToProps = (state, props) => (
   {
+    auth: state.auth,
   }
 );
 

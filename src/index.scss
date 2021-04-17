@@ -46,6 +46,18 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+
+    .auth-form div{
+      display: flex;
+      flex-direction: row;
+      
+      label {
+        width: 40%;
+      }
+      input {
+        width: 60%;
+      }
+    }
   }
 }
 
