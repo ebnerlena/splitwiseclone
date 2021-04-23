@@ -1,4 +1,10 @@
+import { auth } from '../firebase';
+
 const fetchMoneyTransactionsActionCreator = () => async (dispatch) => {
+  if (!auth.currentUser) {
+    return;
+  }
+
   dispatch({
     type: 'fetchMoneyTransactions/inital',
     payload: {},

@@ -1,53 +1,46 @@
 {
   "money-transaction": [
     {
-      "id": 1,
-      "creditorId": 3,
+      "id": 0,
+      "creditorId": 1,
       "debitorId": 2,
-      "amount": 15.2,
-      "paidAt": "2021-03-27T08:55:25.225Z"
+      "amount": 13,
+      "paidAt": null
+    },
+    {
+      "id": 1,
+      "creditorId": 1,
+      "debitorId": 2,
+      "amount": 22,
+      "paidAt": "2021-04-23T09:03:13.348Z"
     },
     {
       "id": 2,
-      "creditorId": 2,
-      "debitorId": 1,
-      "amount": 11.2,
+      "creditorId": 1,
+      "debitorId": 3,
+      "amount": -15,
       "paidAt": null
     },
     {
       "id": 3,
       "creditorId": 1,
-      "debitorId": 3,
-      "amount": 99,
+      "debitorId": 2,
+      "amount": 5,
       "paidAt": null
     },
     {
       "id": 4,
       "creditorId": 1,
       "debitorId": 2,
-      "amount": "-44",
-      "paidAt": null
+      "amount": 3,
+      "paidAt": "2021-04-23T12:00:53.451Z"
     },
     {
       "id": 5,
       "creditorId": 1,
-      "debitorId": 2,
-      "amount": "-2",
-      "paidAt": null
-    },
-    {
-      "id": 6,
-      "creditorId": 1,
       "debitorId": 3,
-      "amount": 7,
-      "paidAt": "2021-03-28T13:27:42.269Z"
-    },
-    {
-      "id": 7,
-      "creditorId": 1,
-      "debitorId": 2,
-      "amount": 2,
-      "paidAt": null
+      "amount": 4,
+      "paidAt": "2021-04-23T12:11:57.764Z"
     }
   ],
   "user": [

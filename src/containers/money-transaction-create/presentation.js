@@ -7,6 +7,7 @@ import Button from '../../components/Button';
 import DecimalInput from '../../components/DecimalInput';
 import SelectInput from '../../components/SelectInput';
 import RadioInput from '../../components/RadioInput';
+import { selectTransactions } from '../../reducers/money-transaction-reducer';
 
 const validationSchema = object({
   amount: number().positive(),
@@ -20,17 +21,19 @@ const MoneyTransactionCreate = ({
   const [message, setMessage] = useState(null);
   useEffect(() => { onLoadData(); }, []);
 
+  const transactions = selectTransactions(moneyTransactions);
+
   const formik = useFormik({
-    initialValues: { userId: 1, amount: '0', selected: '0' },
+    initialValues: { userId: 1, amount: 0, selected: '0' },
     validationSchema,
     onSubmit: (values) => {
       creditorId = (values.userId === 1 ? 2 : 1);
       setMessage(`Trying to create amount: ${values.amount}, from User: ${users[creditorId - 1].name} to User: ${users[values.userId - 1].name}`);
       const transaction = {
-        id: moneyTransactions[moneyTransactions.length - 1].id + 1,
+        id: transactions.length,
         creditorId,
         debitorId: Number(values.userId),
-        amount: values.selected === '0' ? values.amount : `-${values.amount}`,
+        amount: values.selected === '0' ? values.amount : values.amount * (-1),
         paidAt: null,
       };
       onCreate(transaction);

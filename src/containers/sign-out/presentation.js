@@ -1,4 +1,5 @@
 import { useHistory } from 'react-router-dom';
+import React from 'react';
 import Button from '../../components/Button';
 import buttonStyles from '../../components/Button.module.scss';
 

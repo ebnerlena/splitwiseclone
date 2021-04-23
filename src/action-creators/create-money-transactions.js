@@ -1,32 +1,37 @@
+import { auth } from '../firebase';
+
+// thunk functions - so that async is allowed
 const createMoneyTransactionsActionCreator = (payload) => async (dispatch) => {
+  console.log(payload);
+  if (!auth.currentUser) {
+    return {};
+  }
   try {
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     };
-    await fetch('http://localhost:3001/money-transaction', requestOptions)
-      .then(async (response) => {
-        const data = await response.json();
-        if (!response.ok) {
-          const error = (data && data.message) || response.status;
-          return Promise.reject(error);
-        }
-        dispatch({
-          type: 'createMoneyTransactions/success',
-          payload: data,
-        });
-        return data;
-      })
-      .catch((error) => {
-        console.error('There was an error!', error);
-      });
+    const response = await fetch('http://localhost:3001/money-transaction', requestOptions);
+    const data = await response.json();
+    if (!response.ok) {
+      const error = (data && data.message) || response.status;
+      return Promise.reject(error);
+    }
+    dispatch({
+      type: 'createMoneyTransactions/success',
+      payload: data,
+    });
+    return data;
   } catch (exp) {
+    console.log(exp);
+    const error = exp.message;
     dispatch({
       type: 'createMoneyTransactions/error',
-      payload: { exp },
+      payload: { error },
     });
   }
+  return {};
 };
 
 export default createMoneyTransactionsActionCreator;
