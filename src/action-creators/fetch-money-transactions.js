@@ -1,11 +1,17 @@
 import { auth } from '../firebase';
 
-const fetchMoneyTransactionsActionCreator = () => async (dispatch) => {
+const fetchMoneyTransactionsActionCreator = () => async (dispatch, _, { getFirebase }) => {
   if (!auth.currentUser) {
     return;
   }
 
-  dispatch({
+  await getFirebase().promiseEvent(
+    [
+      { path: 'moneyTransactions' },
+    ],
+  );
+
+  /* dispatch({
     type: 'fetchMoneyTransactions/inital',
     payload: {},
   });
@@ -21,7 +27,7 @@ const fetchMoneyTransactionsActionCreator = () => async (dispatch) => {
       type: 'fetchMoneyTransactions/error',
       payload: { error },
     });
-  }
+  } */
 };
 
 export default fetchMoneyTransactionsActionCreator;

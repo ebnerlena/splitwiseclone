@@ -2,13 +2,13 @@ import { connect } from 'react-redux';
 import UserSignIn from './presentation';
 import signIn from '../../action-creators/sign-in';
 
-const mapStateToProps = (state, props) => (
+const mapStateToProps = (state) => (
   {
     auth: state.auth,
   }
 );
 
-const mapDispatchToProps = (dispatch, props) => (
+const mapDispatchToProps = (dispatch) => (
   {
     onSignIn: (email, password, history) => {
       dispatch(signIn({ email, password, history }));

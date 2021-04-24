@@ -1,5 +1,5 @@
-const fetchUsersActionCreator = () => async (dispatch) => {
-  dispatch({
+const fetchUsersActionCreator = () => async (dispatch, _, { getFirebase }) => {
+  /* dispatch({
     type: 'fetchUsers/inital',
     payload: {},
   });
@@ -14,7 +14,10 @@ const fetchUsersActionCreator = () => async (dispatch) => {
       type: 'fetchUsers/error',
       payload: { exp },
     });
-  }
+  } */
+  await getFirebase().promiseEvents([
+    { path: 'users' },
+  ]);
 };
 
 export default fetchUsersActionCreator;

@@ -60,8 +60,16 @@
 }
 
 
+
+
 button:disabled, button[disabled] {
   background: $accentColor;
   cursor: default;
+
+  &.logout {
+    filter: saturate(0.6);
+    opacity: 0.8;
+    background: $backgroundColor;
+  }
 }
 

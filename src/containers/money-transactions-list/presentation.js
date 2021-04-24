@@ -5,15 +5,15 @@ import Button from '../../components/Button';
 import styles from './MoneyTransactionList.module.scss';
 import buttonStyles from '../../components/Button.module.scss';
 import { auth } from '../../firebase';
-import { selectTransactionById, selectTransactions } from '../../reducers/money-transaction-reducer';
 
 const renderButton = (transaction, payBtnClick) => {
-  if (transaction.paidAt) {
+  console.log(transaction);
+  if (transaction.value.paidAt) {
     return <Button id={transaction.id} disabled styles={[buttonStyles.button, buttonStyles.primary].join(' ')}>Paid</Button>;
   }
-  return transaction.amount < 0
-    ? <Button id={transaction.id} disabled styles={[buttonStyles.button, buttonStyles.primary].join(' ')}>Where is my money?</Button>
-    : <Button id={transaction.id} onClick={payBtnClick} styles={[buttonStyles.button, buttonStyles.primary].join(' ')}>Pay now</Button>;
+  return transaction.value.amount < 0
+    ? <Button id={transaction.key} disabled styles={[buttonStyles.button, buttonStyles.primary].join(' ')}>Where is my money?</Button>
+    : <Button id={transaction.key} onClick={payBtnClick} styles={[buttonStyles.button, buttonStyles.primary].join(' ')}>Pay now</Button>;
 };
 
 const MoneyTransactionsList = ({
@@ -21,17 +21,6 @@ const MoneyTransactionsList = ({
 }) => {
   useEffect(() => { onLoadData(); }, []);
   const history = useHistory();
-  const loadingStatus = useSelector((state) => state.moneyTransactions.status);
-  // const [status, setStatus] = useState('idle') oder so
-  const transactions = selectTransactions(moneyTransactions);
-
-  if (loadingStatus === 'loading') {
-    return (
-      <div className="todo-list">
-        <div className="loader" />
-      </div>
-    );
-  }
 
   useEffect(() => {
     if (auth.currentUser == null) {
@@ -48,16 +37,21 @@ const MoneyTransactionsList = ({
     };
     onUpdateTransaction(transaction);
   };
-
+  if (!moneyTransactions) {
+    return (
+      <>
+      </>
+    );
+  }
   return (
     <dl className={`${styles.list}`}>
-      {transactions.map((transaction) => (
-        <React.Fragment key={transaction.id}>
+      {moneyTransactions.map((transaction) => (
+        <React.Fragment key={transaction.key}>
           <dt className={`${styles.item}`}>
-            <span>{users?.find((user) => user.id === transaction.debitorId)?.name}</span>
+            <span>{users?.find((user) => user.id === transaction.value.debitorId)?.name}</span>
             <span>
               Amount:
-              {transaction.amount}
+              {transaction.value.amount}
             </span>
             {renderButton(transaction, payBtnClick)}
           </dt>

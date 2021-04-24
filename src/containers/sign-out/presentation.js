@@ -3,9 +3,8 @@ import React from 'react';
 import Button from '../../components/Button';
 import buttonStyles from '../../components/Button.module.scss';
 
-const UserSignOut = ({ onSignOut }) => {
+const UserSignOut = ({ onSignOut, disabled }) => {
   const history = useHistory();
-
   const onLogoutClicked = () => {
     onSignOut();
     history.push('/sign-in');
@@ -14,6 +13,7 @@ const UserSignOut = ({ onSignOut }) => {
     <Button
       type="button"
       onClick={onLogoutClicked}
+      disabled={disabled}
       styles={[buttonStyles.button, buttonStyles.logout].join(' ')}
     >
       Logout

@@ -2,12 +2,12 @@ import { connect } from 'react-redux';
 import UserSignOut from './presentation';
 import signOut from '../../action-creators/sign-out';
 
-const mapStateToProps = (state, props) => (
+const mapStateToProps = () => (
   {
   }
 );
 
-const mapDispatchToProps = (dispatch, props) => (
+const mapDispatchToProps = (dispatch) => (
   {
     onSignOut: () => {
       dispatch(signOut());

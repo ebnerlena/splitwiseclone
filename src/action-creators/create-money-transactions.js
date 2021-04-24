@@ -1,12 +1,18 @@
 import { auth } from '../firebase';
 
 // thunk functions - so that async is allowed
-const createMoneyTransactionsActionCreator = (payload) => async (dispatch) => {
+const createMoneyTransactionsActionCreator = (payload) => async (dispatch, _, { getFirebase }) => {
   console.log(payload);
   if (!auth.currentUser) {
     return {};
   }
-  try {
+
+  await getFirebase()
+    .ref('moneyTransactions')
+    .push(payload);
+
+  console.log('i am here');
+  /* try {
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -30,7 +36,7 @@ const createMoneyTransactionsActionCreator = (payload) => async (dispatch) => {
       type: 'createMoneyTransactions/error',
       payload: { error },
     });
-  }
+  } */
   return {};
 };
 
