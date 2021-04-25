@@ -1,7 +1,5 @@
 const initialState = [];
 
-// selector function should be used with useSelector in component
-//  use state object structure would be better with error that gets an according value
 const removeErrorMessages = (state) => state.filter((e) => !e.signInError && !e.signUpError);
 
 const AuthReducer = (state = initialState, action) => {
@@ -12,9 +10,9 @@ const AuthReducer = (state = initialState, action) => {
       return [removeErrorMessages(state), action.payload];
     case 'user/signedOut':
       return initialState;
-    case 'user/signedUp/error':
+    case 'auth/signedUp/error':
       return [...state, action.payload];
-    case 'user/signedIn/error':
+    case 'auth/signedIn/error':
       return [...state, action.payload];
     default:
       return state;

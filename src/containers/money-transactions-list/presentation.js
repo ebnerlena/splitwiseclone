@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import Button from '../../components/Button';
 import styles from './MoneyTransactionList.module.scss';
 import buttonStyles from '../../components/Button.module.scss';
@@ -15,8 +14,27 @@ const renderButton = (transaction, payBtnClick) => {
     : <Button id={transaction.key} onClick={payBtnClick} styles={[buttonStyles.button, buttonStyles.primary].join(' ')}>Pay now</Button>;
 };
 
+const renderTransaction = (transaction, currentUser, users, payBtnClick) => {
+  if (transaction.value.creditorId === currentUser?.key) {
+    return (
+      <React.Fragment key={transaction.key}>
+        <dt className={`${styles.item}`}>
+          <span>{users[transaction.value.debitorId]?.email}</span>
+          <span>
+            Amount:
+            {transaction.value.amount}
+          </span>
+          {renderButton(transaction, payBtnClick)}
+        </dt>
+      </React.Fragment>
+    );
+  }
+
+  return <> </>;
+};
+
 const MoneyTransactionsList = ({
-  users, moneyTransactions, onLoadData, onUpdateTransaction,
+  usersArray, usersObjects, moneyTransactions, onLoadData, onUpdateTransaction,
 }) => {
   useEffect(() => { onLoadData(); }, []);
   const history = useHistory();
@@ -27,8 +45,7 @@ const MoneyTransactionsList = ({
     }
   }, []);
 
-  console.log(users);
-  console.log(moneyTransactions);
+  const currentUser = usersArray?.find((user) => user.value.email === auth.currentUser?.email);
 
   const payBtnClick = (ev) => {
     const date = new Date().toISOString();
@@ -39,25 +56,18 @@ const MoneyTransactionsList = ({
     };
     onUpdateTransaction(transaction);
   };
+
   if (!moneyTransactions) {
     return (
       <>
       </>
     );
   }
+
   return (
     <dl className={`${styles.list}`}>
       {moneyTransactions.map((transaction) => (
-        <React.Fragment key={transaction.key}>
-          <dt className={`${styles.item}`}>
-            <span>{users[0]?.value.email}</span>
-            <span>
-              Amount:
-              {transaction.value.amount}
-            </span>
-            {renderButton(transaction, payBtnClick)}
-          </dt>
-        </React.Fragment>
+        renderTransaction(transaction, currentUser, usersObjects, payBtnClick)
       ))}
     </dl>
   );

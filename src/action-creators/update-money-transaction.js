@@ -1,27 +1,9 @@
-const updateMoneyTransactionActionCreator = (payload) => async (dispatch) => {
+const updateMoneyTransactionActionCreator = (payload) => async (dispatch, _, { getFirebase }) => {
   try {
-    const transaction = await fetch(`http://localhost:3001/money-transaction/${payload.id}`)
-      .then((response) => response.json());
-    transaction.paidAt = payload.paidAt;
-
-    const requestOptions = {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(transaction),
-    };
-    const response = await fetch(`http://localhost:3001/money-transaction/${payload.id}`, requestOptions);
-
-    const data = await response.json();
-    if (!response.ok) {
-      const error = (data && data.message) || response.status;
-      return Promise.reject(error);
-    }
-
-    dispatch({
-      type: 'updateMoneyTransaction/success',
-      payload: data,
-    });
-    return data;
+    getFirebase()
+      .ref('moneyTransactions')
+      .child(payload.id)
+      .update({ paidAt: payload.paidAt });
   } catch (exp) {
     console.log(exp.message);
     dispatch({

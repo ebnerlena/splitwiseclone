@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { useFormik } from 'formik';
 import { object, string } from 'yup';
@@ -16,7 +16,6 @@ const validationSchema = object({
 
 const UserSignIn = ({ auth, onSignIn }) => {
   const history = useHistory();
-  const [message, setMessage] = useState(null);
   const authErrorMessage = auth.reverse().find((e) => e.signInError);
 
   const formik = useFormik({
@@ -25,7 +24,6 @@ const UserSignIn = ({ auth, onSignIn }) => {
     onSubmit: (values) => {
       const { email } = values;
       const pw = values.password;
-      setMessage(`Trying to login with: Email: ${email}, PW: ${pw}`);
       onSignIn(email, pw, history);
     },
   });
@@ -62,7 +60,6 @@ const UserSignIn = ({ auth, onSignIn }) => {
           Sign In
         </Button>
       </form>
-      { message && <div>{message}</div> }
       <p id="error">
         {' '}
         {authErrorMessage?.signInError}

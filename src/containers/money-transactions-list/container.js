@@ -2,13 +2,12 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { firebaseConnect } from 'react-redux-firebase';
 import MoneyTransactionsList from './presentation';
-import fetchMoneyTransactions from '../../action-creators/fetch-money-transactions';
-import fetchUsers from '../../action-creators/fetch-users';
 import updateMoneyTransaction from '../../action-creators/update-money-transaction';
 
 const mapStateToProps = (state) => (
   {
-    users: state.firebase.ordered.users,
+    usersArray: state.firebase.ordered.users,
+    usersObjects: state.firebase.data.users,
     moneyTransactions: state.firebase.ordered.moneyTransactions,
   }
 );

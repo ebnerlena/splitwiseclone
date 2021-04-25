@@ -2,18 +2,7 @@ import { auth } from '../firebase';
 
 const signIn = ({ email, password, history }) => async (dispatch) => {
   try {
-    auth.signInWithEmailAndPassword(email, password);
-
-    /* console.log(response);
-    const token = (await response).user.refreshToken;
-
-    dispatch(
-      {
-        type: 'user/signedIn',
-        payload: { token },
-      },
-    ); */
-
+    await auth.signInWithEmailAndPassword(email, password);
     history.push('money-transactions');
   } catch (exp) {
     const error = exp.message;

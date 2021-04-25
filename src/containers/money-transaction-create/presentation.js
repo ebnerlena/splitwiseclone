@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useFormik } from 'formik';
 import { object, number } from 'yup';
 import styles from './MoneyTransactionCreate.module.scss';
@@ -13,23 +13,19 @@ const validationSchema = object({
   amount: number().positive(),
 });
 
-let creditorId = 1;
-
 const MoneyTransactionCreate = ({
   users, onLoadData, onCreate,
 }) => {
-  const [message, setMessage] = useState(null);
   useEffect(() => { onLoadData(); }, []);
 
   const formik = useFormik({
     initialValues: { userId: 1, amount: 0, selected: '0' },
     validationSchema,
     onSubmit: (values) => {
-      creditorId = users[values.userId - 1].key;
-      setMessage(`Trying to create amount: ${values.amount}, from User: to User: ${creditorId}`);
+      const currentUser = users.find((user) => user.value.email === auth.currentUser.email);
       const transaction = {
-        creditorId: (values.selected === '1') ? auth.currentUser.id : users[values.userId - 1].key,
-        debitorId: (values.selected === '0') ? users[values.userId - 1].key : auth.currentUser.id,
+        creditorId: currentUser.key,
+        debitorId: values.userId,
         amount: values.selected === '0' ? values.amount : values.amount * (-1),
       };
       onCreate(transaction);
@@ -82,9 +78,7 @@ const MoneyTransactionCreate = ({
             Create
           </Button>
         </div>
-        <div id="submission" />
       </form>
-      { message && <div>{message}</div> }
     </>
   );
 };
