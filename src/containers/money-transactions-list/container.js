@@ -8,7 +8,7 @@ import updateMoneyTransaction from '../../action-creators/update-money-transacti
 
 const mapStateToProps = (state) => (
   {
-    users: state.users,
+    users: state.firebase.ordered.users,
     moneyTransactions: state.firebase.ordered.moneyTransactions,
   }
 );

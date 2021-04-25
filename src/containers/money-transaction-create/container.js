@@ -7,7 +7,7 @@ import createMoneyTransactions from '../../action-creators/create-money-transact
 
 const mapStateToProps = (state) => (
   {
-    users: state.users,
+    users: state.firebase.ordered.users,
     // moneyTransactions: state.moneyTransactions,
     moneyTransactions: state.firebase.ordered.moneyTransactions,
   }
@@ -16,7 +16,7 @@ const mapStateToProps = (state) => (
 const mapDispatchToProps = (dispatch) => (
   {
     onLoadData: () => {
-      // dispatch(fetchUsers());
+      dispatch(fetchUsers());
     },
     onCreate: (data) => {
       dispatch(createMoneyTransactions(data));

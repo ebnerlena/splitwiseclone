@@ -7,7 +7,6 @@ import buttonStyles from '../../components/Button.module.scss';
 import { auth } from '../../firebase';
 
 const renderButton = (transaction, payBtnClick) => {
-  console.log(transaction);
   if (transaction.value.paidAt) {
     return <Button id={transaction.id} disabled styles={[buttonStyles.button, buttonStyles.primary].join(' ')}>Paid</Button>;
   }
@@ -27,6 +26,9 @@ const MoneyTransactionsList = ({
       history.push('/sign-in');
     }
   }, []);
+
+  console.log(users);
+  console.log(moneyTransactions);
 
   const payBtnClick = (ev) => {
     const date = new Date().toISOString();
@@ -48,7 +50,7 @@ const MoneyTransactionsList = ({
       {moneyTransactions.map((transaction) => (
         <React.Fragment key={transaction.key}>
           <dt className={`${styles.item}`}>
-            <span>{users?.find((user) => user.id === transaction.value.debitorId)?.name}</span>
+            <span>{users[0]?.value.email}</span>
             <span>
               Amount:
               {transaction.value.amount}

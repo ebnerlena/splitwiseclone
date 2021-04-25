@@ -7,6 +7,7 @@ import Button from '../../components/Button';
 import DecimalInput from '../../components/DecimalInput';
 import SelectInput from '../../components/SelectInput';
 import RadioInput from '../../components/RadioInput';
+import { auth } from '../../firebase';
 
 const validationSchema = object({
   amount: number().positive(),
@@ -24,13 +25,12 @@ const MoneyTransactionCreate = ({
     initialValues: { userId: 1, amount: 0, selected: '0' },
     validationSchema,
     onSubmit: (values) => {
-      creditorId = (values.userId === 1 ? 2 : 1);
-      setMessage(`Trying to create amount: ${values.amount}, from User: ${users[creditorId - 1].name} to User: ${users[values.userId - 1].name}`);
+      creditorId = users[values.userId - 1].key;
+      setMessage(`Trying to create amount: ${values.amount}, from User: to User: ${creditorId}`);
       const transaction = {
-        creditorId,
-        debitorId: Number(values.userId),
+        creditorId: (values.selected === '1') ? auth.currentUser.id : users[values.userId - 1].key,
+        debitorId: (values.selected === '0') ? users[values.userId - 1].key : auth.currentUser.id,
         amount: values.selected === '0' ? values.amount : values.amount * (-1),
-        paidAt: null,
       };
       onCreate(transaction);
     },

@@ -25,7 +25,7 @@ export const database = firebase.database();
 
 if (process.env.NODE_ENV === 'development') {
   auth.useEmulator('http://localhost:9099');
-  database.useEmulator('localhost', 90000);
+  database.useEmulator('localhost', 9000);
 }
 
 export { firebase };
