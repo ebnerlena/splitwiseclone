@@ -24,33 +24,6 @@ const App = () => {
 
   if (initializing) return null;
 
-  if (!user) {
-    return (
-      <Router>
-        <header>
-          <h1> Splitwise Clone </h1>
-          <Navigation />
-        </header>
-        <main>
-          <Switch>
-            <Route path="/sign-in" component={SignIn} />
-            <Route path="/sign-up" component={UserSignUp} />
-            <Route
-              path="/money-transactions"
-              render={() => (
-                <>
-                  <MoneyTransactionCreate />
-                  <MoneyTransactionsList />
-                </>
-              )}
-            />
-            <Redirect to="/sign-in" />
-          </Switch>
-        </main>
-        <footer> </footer>
-      </Router>
-    );
-  }
   return (
     <Router>
       <header>
@@ -70,7 +43,9 @@ const App = () => {
               </>
             )}
           />
-          <Redirect to="/money-transactions" />
+          {
+              (!user) ? <Redirect to="/sign-in" /> : <Redirect to="/money-transactions" />
+            }
         </Switch>
       </main>
       <footer> </footer>
