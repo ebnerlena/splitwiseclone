@@ -66,7 +66,7 @@ const MoneyTransactionsList = ({
 
   return (
     <dl className={`${styles.list}`}>
-      {moneyTransactions.map((transaction) => (
+      {moneyTransactions && moneyTransactions.map((transaction) => (
         renderTransaction(transaction, currentUser, usersObjects, payBtnClick)
       ))}
     </dl>

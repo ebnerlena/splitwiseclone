@@ -25,7 +25,7 @@ const mapDispatchToProps = (dispatch) => (
 );
 
 export default compose(
-  firebaseConnect(['moneyTransactions']),
+  firebaseConnect(['moneyTransactions' , 'users']),
   connect(mapStateToProps, mapDispatchToProps),
 )(MoneyTransactionsCreate);
 

@@ -25,7 +25,7 @@ const MoneyTransactionCreate = ({
       const currentUser = users.find((user) => user.value.email === auth.currentUser.email);
       const transaction = {
         creditorId: currentUser.key,
-        debitorId: values.userId === 1 ? users[0].key : values.userId,
+        debitorId: values.userId == 1 ? users[0].key : values.userId,
         amount: values.selected === '0' ? values.amount : values.amount * (-1),
       };
       onCreate(transaction);
