@@ -6,7 +6,7 @@ const signUp = ({ email, password, history }) => async (dispatch, _, { getFireba
 
     await getFirebase()
       .ref('users')
-      .push({ email, name: 'sepp' });
+      .push({ email });
 
     history.push('/money-transactions');
   } catch (exp) {
