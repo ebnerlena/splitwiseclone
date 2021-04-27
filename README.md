@@ -1,9 +1,8 @@
 # Splitwise Clone - Fullstack SS 2021
 
-## Members
-- Alexandru Sava
-- Lena Ebner
-- Stefania Mocan
+## Description
+An web application build with React.js in the frontend and firebase as a backend service.  
+can be viewed here: https://full-stack-dev131122998877.web.app/sign-in
 
 # Available Scripts
 
